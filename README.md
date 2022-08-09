@@ -226,10 +226,9 @@ Wikipedia says
 Translating the door example above. First of all we have our `Door` interface and some implementation for it
 
 ```C#
-interface IDoor {
-
+interface IDoor
+{
   void GetDescription();
-
 }
 class WoodenDoor : IDoor
 {
@@ -274,7 +273,8 @@ class Carpenter : IDoorFittingExpert
 
 Now we have our abstract factory that would let us make family of related objects i.e. wooden door factory would create a wooden door and wooden door fitting expert and iron door factory would create an iron door and iron door fitting expert
 ```C#
-interface IDoorFactory {
+interface IDoorFactory
+{
   IDoor MakeDoor();
   IDoorFittingExpert MakeFittingExpert();
 }
@@ -315,7 +315,7 @@ var woodenDoor = woodenDoorFactory.MakeDoor();
 var woodenDoorFittingExpert = woodenDoorFactory.MakeFittingExpert();
 
 woodenDoor.GetDescription(); //Output : I am a wooden door
-woodenDoorFittingExpert.GetDescription();//Output : I can only fit woooden doors
+woodenDoorFittingExpert.GetDescription();//Output : I can only fit wooden doors
 
 var ironDoorFactory = new IronDoorFactory();
 
@@ -326,7 +326,7 @@ ironDoor.GetDescription();//Output : I am a iron door
 ironDoorFittingExpert.GetDescription();//Output : I can only fit iron doors
 ```
 
-As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.   
+As you can see the wooden door factory has encapsulated the `carpenter` and the `wooden door` also iron door factory has encapsulated the `iron door` and `welder`. And thus it had helped us make sure that for each of the created door, we do not get a wrong fitting expert.
 
 **When to use?**
 
@@ -387,7 +387,8 @@ class Burger
 And then we have the builder
 
 ```C#
-class BurgerBuilder {
+class BurgerBuilder
+{
   public int Size;
   public bool Cheese;
   public bool Pepperoni;
@@ -432,11 +433,12 @@ class BurgerBuilder {
 And then it can be used as:
 
 ```C#
-var burger = new BurgerBuilder(4).AddCheese()
-                                .AddPepperoni()
-                                .AddLettuce()
-                                .AddTomato()
-                                .Build();
+var burger = new BurgerBuilder(4)
+              .AddCheese()
+              .AddPepperoni()
+              .AddLettuce()
+              .AddTomato()
+              .Build();
 Console.WriteLine(burger.GetDescription());
 ```
 
@@ -1498,11 +1500,10 @@ class RadioStation
     mFrequency = frequency;
   }
 
-  public float GetFrequecy()
+  public float GetFrequency()
   {
     return mFrequency;
   }
-
 }
 
 ```
@@ -1561,11 +1562,11 @@ stations.Add(station3);
 
 foreach(var x in stations)
 {
-  Console.Write(x.GetFrequecy());
+  Console.Write(x.GetFrequency());
 }
 
-var q = stations.Where(x => x.GetFrequecy() == 89).FirstOrDefault();
-Console.WriteLine(q.GetFrequecy());
+var q = stations.Where(x => x.GetFrequency() == 89).FirstOrDefault();
+Console.WriteLine(q.GetFrequency());
 
 Console.ReadLine();
 ```
@@ -1684,8 +1685,8 @@ class EditorMemento
 Then we have our editor i.e. originator that is going to use memento object
 
 ```C#
-class Editor {
-
+class Editor
+{
   private string mContent = string.Empty;
   private EditorMemento memento;
 
@@ -1747,7 +1748,7 @@ Console.Write(editor.Content); // This is the first sentence. This is second
 😎 Observer
 --------
 Real world example
-> A good example would be the job seekers where they subscribe to some job posting site and they are notified whenever there is a matching job opportunity.   
+> A good example would be the job seekers where they subscribe to some job posting site and they are notified whenever there is a matching job opportunity.
 
 In plain words
 > Defines a dependency between objects so that whenever an object changes its state, all its dependents are notified.
@@ -1858,7 +1859,7 @@ Then it can be used as
 var johnDoe = new JobSeeker("John Doe");
 var janeDoe = new JobSeeker("Jane Doe");
 
-//Create publisher and attch subscribers
+//Create publisher and attach subscribers
 var jobPostings = new JobPostings();
 jobPostings.Subscribe(johnDoe);
 jobPostings.Subscribe(janeDoe);
@@ -2086,7 +2087,7 @@ sorter.Sort(unSortedList); // // Output : Sorting using Quick Sort !
 💢 State
 -----
 Real world example
-> Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes its behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.  
+> Imagine you are using some drawing application, you choose the paint brush to draw. Now the brush changes its behavior based on the selected color i.e. if you have chosen red color it will draw in red, if blue then it will be in blue etc.
 
 In plain words
 > It lets you change the behavior of a class when the state changes.
@@ -2102,10 +2103,9 @@ Let's take an example of text editor, it lets you change the state of text that 
 First of all we have our state interface and some state implementations
 
 ```C#
-interface IWritingState {
-
+interface IWritingState
+{
   void Write(string words);
-
 }
 
 class UpperCase : IWritingState
@@ -2134,8 +2134,8 @@ class DefaultText : IWritingState
 ```
 Then we have our editor
 ```C#
-class TextEditor {
-
+class TextEditor
+{
   private IWritingState mState;
 
   public TextEditor()
@@ -2152,7 +2152,6 @@ class TextEditor {
   {
     mState.Write(words);
   }
-
 }
 ```
 And then it can be used as
@@ -2303,7 +2302,7 @@ And that about wraps it up. I will continue to improve this, so you might want t
 - Report issues
 - Open pull request with improvements
 - Spread the word
-- Contact me on <a href="https://twitter.com/anupavanm">Twitter</a> 
+- Contact me on <a href="https://twitter.com/anupavanm">Twitter</a>
 
 ## License
 
